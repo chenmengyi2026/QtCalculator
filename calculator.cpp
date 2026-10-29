@@ -37,6 +37,12 @@ void Calculator::connectButtons()
     connect(ui->btn_multiply, &QPushButton::clicked, this, [this]() { inputOperator('*'); });
     connect(ui->btn_divide,   &QPushButton::clicked, this, [this]() { inputOperator('/'); });
     connect(ui->btn_equals,   &QPushButton::clicked, this, [this]() { inputEquals(); });
+
+    connect(ui->btn_negate,     &QPushButton::clicked, this, [this]() { inputNegate(); });
+    connect(ui->btn_percent,    &QPushButton::clicked, this, [this]() { inputPercent(); });
+    connect(ui->btn_reciprocal, &QPushButton::clicked, this, [this]() { inputReciprocal(); });
+    connect(ui->btn_square,     &QPushButton::clicked, this, [this]() { inputSquare(); });
+    connect(ui->btn_sqrt,       &QPushButton::clicked, this, [this]() { inputSqrt(); });
 }
 
 double Calculator::compute(double a, double b, char op, bool &ok) const
@@ -183,4 +189,51 @@ void Calculator::inputClearEntry()
     if (m_error) { inputClear(); return; }
     m_display = "0"; m_waitingForOperand = false;
     setDisplay(m_display);
+}
+
+// —— 单目 / 其他 ——
+void Calculator::inputNegate()
+{
+    if (m_error || m_display == "0") return;
+    if (m_display.startsWith('-')) m_display = m_display.mid(1);
+    else m_display = "-" + m_display;
+    setDisplay(m_display);
+}
+
+void Calculator::inputPercent()
+{
+    if (m_error) return;
+    m_display = formatDouble(m_display.toDouble() / 100.0);
+    setDisplay(m_display);
+}
+
+double Calculator::applyUnary(std::function<double(double)> fn, const QString &exprText)
+{
+    if (m_error) return 0;
+    double v = m_display.toDouble();
+    double r = fn(v);
+    if (qIsNaN(r) || qIsInf(r)) { showError("错误"); return 0; }
+    m_expr = exprText.arg(formatDouble(v));
+    m_display = formatDouble(r);
+    m_justEvaluated = true;
+    setDisplay(m_display);
+    ui->exprLabel->setText(m_expr);
+    return r;
+}
+
+void Calculator::inputReciprocal()
+{
+    if (qFuzzyIsNull(m_display.toDouble())) { showError("除数不能为0"); return; }
+    applyUnary([](double v) { return 1.0 / v; }, "1 / (%1)");
+}
+
+void Calculator::inputSquare()
+{
+    applyUnary([](double v) { return v * v; }, "(%1)^2");
+}
+
+void Calculator::inputSqrt()
+{
+    if (m_display.toDouble() < 0) { showError("负数不能开平方"); return; }
+    applyUnary([](double v) { return qSqrt(v); }, "√(%1)");
 }

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+#include <functional>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Calculator; }
@@ -35,8 +36,14 @@ private:
     void inputClearEntry();
     void inputOperator(char op);
     void inputEquals();
+    void inputNegate();
+    void inputPercent();
+    void inputReciprocal();
+    void inputSquare();
+    void inputSqrt();
 
     double compute(double a, double b, char op, bool &ok) const;
+    double applyUnary(std::function<double(double)> fn, const QString &exprText);
     QString formatDouble(double v) const;
     void setDisplay(const QString &text);
     void showError(const QString &msg);
