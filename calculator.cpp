@@ -12,6 +12,27 @@ Calculator::Calculator(QWidget *parent)
     ui->setupUi(this);
     setDisplay(m_display);
     connectButtons();
+
+    // —— 使用 QSS 美化界面：参考 Windows/手机计算器的浅色风格 ——
+    this->setStyleSheet(R"(
+        QWidget { background-color: #f5f6f8; }
+        QLabel#exprLabel { color: #9aa0a6; font-size: 18px; qproperty-alignment: AlignRight; }
+        QLabel#displayLabel { color: #202124; font-size: 40px; font-weight: 500;
+                              qproperty-alignment: AlignRight; padding-right: 6px; }
+        QPushButton {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #202124;
+}
+        QPushButton:hover  { background-color: #e8eaed; }
+        QPushButton:pressed { background-color: #d2e3fc; }
+        QPushButton#btn_equals { background-color: #4285f4; color: white; font-size: 22px; }
+        QPushButton#btn_equals:hover { background-color: #3b78e7; }
+        QPushButton#btn_divide, QPushButton#btn_multiply, QPushButton#btn_minus,
+        QPushButton#btn_plus { color: #4285f4; font-size: 22px; }
+    )");
 }
 
 Calculator::~Calculator()
