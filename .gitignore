@@ -1,0 +1,13 @@
+﻿# Qt build artifacts
+release/
+debug/
+Makefile*
+*.obj
+*.o
+moc_*
+ui_*.h
+*.pro.user*
+*.user
+# temp
+*.final
+screenshots/

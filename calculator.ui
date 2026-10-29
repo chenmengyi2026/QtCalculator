@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Calculator</class>
+ <widget class="QWidget" name="Calculator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>380</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>计算器</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="leftMargin">
+    <number>12</number>
+   </property>
+   <property name="topMargin">
+    <number>12</number>
+   </property>
+   <property name="rightMargin">
+    <number>12</number>
+   </property>
+   <property name="bottomMargin">
+    <number>12</number>
+   </property>
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="displayLayout">
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="exprLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="displayLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="buttonGrid">
+     <property name="horizontalSpacing">
+      <number>6</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>6</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="btn_percent">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>%</string></property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="btn_ce">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>CE</string></property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="btn_clear">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>C</string></property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="btn_backspace">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>⌫</string></property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btn_reciprocal">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>1/x</string></property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="btn_square">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>x²</string></property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="btn_sqrt">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>√</string></property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QPushButton" name="btn_divide">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>÷</string></property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="btn_7">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>7</string></property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="btn_8">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>8</string></property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="btn_9">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>9</string></property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QPushButton" name="btn_multiply">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>×</string></property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="btn_4">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>4</string></property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="btn_5">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>5</string></property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="btn_6">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>6</string></property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QPushButton" name="btn_minus">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>−</string></property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="btn_1">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>1</string></property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="btn_2">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>2</string></property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="btn_3">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>3</string></property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QPushButton" name="btn_plus">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>+</string></property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QPushButton" name="btn_negate">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>+/−</string></property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPushButton" name="btn_0">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>0</string></property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QPushButton" name="btn_dot">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>.</string></property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QPushButton" name="btn_equals">
+       <property name="minimumSize">
+        <size><width>0</width><height>52</height></size>
+       </property>
+       <property name="text"><string>=</string></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
