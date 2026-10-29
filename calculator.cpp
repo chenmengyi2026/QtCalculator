@@ -3,6 +3,7 @@
 
 #include <QPushButton>
 #include <QtMath>
+#include <QKeyEvent>
 
 Calculator::Calculator(QWidget *parent)
     : QWidget(parent)
@@ -236,4 +237,35 @@ void Calculator::inputSqrt()
 {
     if (m_display.toDouble() < 0) { showError("负数不能开平方"); return; }
     applyUnary([](double v) { return qSqrt(v); }, "√(%1)");
+}
+
+// —— 键盘事件：只做"按键 -> 语义动作"的翻译，逻辑全部复用上面的函数 ——
+void Calculator::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_0: case Qt::Key_1: case Qt::Key_2: case Qt::Key_3:
+    case Qt::Key_4: case Qt::Key_5: case Qt::Key_6: case Qt::Key_7:
+    case Qt::Key_8: case Qt::Key_9:
+        inputDigit(event->key() - Qt::Key_0);
+        break;
+    case Qt::Key_Period:
+    case Qt::Key_Comma:
+        inputDecimal();
+        break;
+    case Qt::Key_Plus:   inputOperator('+'); break;
+    case Qt::Key_Minus:  inputOperator('-'); break;
+    case Qt::Key_Asterisk:
+    case Qt::Key_X:      inputOperator('*'); break;
+    case Qt::Key_Slash:
+        event->accept();
+        inputOperator('/');
+        break;
+    case Qt::Key_Enter:
+    case Qt::Key_Return:
+    case Qt::Key_Equal:  inputEquals(); break;
+    case Qt::Key_Backspace: inputBackspace(); break;
+    case Qt::Key_Escape:    inputClear(); break;
+    case Qt::Key_Percent:   inputPercent(); break;
+    default: QWidget::keyPressEvent(event); break;
+    }
 }

@@ -17,6 +17,10 @@ public:
     explicit Calculator(QWidget *parent = nullptr);
     ~Calculator();
 
+protected:
+    // 键盘事件：把按键翻译成语义动作，复用与鼠标相同的处理函数
+    void keyPressEvent(QKeyEvent *event) override;
+
 private:
     Ui::Calculator *ui;
 
