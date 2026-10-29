@@ -20,12 +20,17 @@ private:
     Ui::Calculator *ui;
 
     QString m_display = "0";   // 主显示区当前字符串
+    double  m_first = 0.0;     // 第一个操作数
+    char    m_op = '\0';       // 待执行的二元运算符
+    bool    m_waiting = false;  // 刚按过运算符，下一个数字开始新操作数
 
     void inputDigit(int digit);
-    void inputDecimal();        // 小数点
-    void inputBackspace();      // 退格
-    void inputClear();          // C 全部清除
-    void inputClearEntry();     // CE 清除当前项
+    void inputDecimal();
+    void inputBackspace();
+    void inputClear();
+    void inputClearEntry();
+    void inputOperator(char op);
+    void inputEquals();
     void connectButtons();
 };
 
