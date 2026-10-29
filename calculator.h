@@ -22,6 +22,10 @@ private:
     QString m_display = "0";   // 主显示区当前字符串
 
     void inputDigit(int digit);
+    void inputDecimal();        // 小数点
+    void inputBackspace();      // 退格
+    void inputClear();          // C 全部清除
+    void inputClearEntry();     // CE 清除当前项
     void connectButtons();
 };
 
